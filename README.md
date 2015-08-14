@@ -4,16 +4,16 @@ Simplified project to test styling in Polymer.
 Just disregard the header-menu element, I was having an issue in there too but figured it out now. 
 Kept it as it gives me the main container where the side-drawer lives.
 
-Relevant parts for this issue: 
-/*
-app-theme.html
-  side-drawer {
-    --side-drawer-container-left-theme: {
-      background: blue;
-    };
-  }
+Relevant parts for this issue: <br>
 
-side-drawer.html
+app-theme.html <br>
+  side-drawer { <br>
+    --side-drawer-container-left-theme: { <br>
+      background: blue; <br>
+    }; <br>
+  } <br>
+
+side-drawer.html 
   .drawer-container-left {
       background: red;
       position: absolute;
@@ -24,7 +24,7 @@ side-drawer.html
       /*@apply(--side-drawer-container-left-theme);*/
 
   }
-*/
+
 
 So. We want to have a lot of the styling in one place; in the app-theme.html.
 Looking at the starter kits, theres a :root with some styling, and then theres ids like #drawerToolbar, and then elements like 
