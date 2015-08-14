@@ -5,7 +5,7 @@ Just disregard the header-menu element, I was having an issue in there too but f
 Kept it as it gives me the main container where the side-drawer lives.
 
 Relevant parts for this issue: 
-
+/*
 app-theme.html
   side-drawer {
     --side-drawer-container-left-theme: {
@@ -24,6 +24,7 @@ side-drawer.html
       /*@apply(--side-drawer-container-left-theme);*/
 
   }
+*/
 
 So. We want to have a lot of the styling in one place; in the app-theme.html.
 Looking at the starter kits, theres a :root with some styling, and then theres ids like #drawerToolbar, and then elements like 
