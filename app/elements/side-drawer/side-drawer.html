@@ -1,0 +1,107 @@
+<dom-module id="side-drawer">
+  <style>
+
+    .drawer-container-left{
+        background: red;
+        position: absolute;
+        left: 0;
+        display: block;
+
+        /*uncomment this and see that it breaks*/
+        /*@apply(--side-drawer-container-left-theme);*/
+
+    }
+    .drawer-container-right{
+        position: absolute;
+        right: 0;
+        display: block;
+    }
+    .drawer-container-left .drawer-buttons{
+        position: absolute;
+    }
+    .drawer-container-right .drawer-buttons{
+        position: absolute;
+        left: -40px;
+    }
+    #collapse{
+        height: 100%;
+        float: left;
+    }
+    .drawer-contents{
+        width: 200px;
+        height: 700px;
+        position: relative;
+    }
+  </style>
+
+  <template>
+    <div class$="{{class}}">
+      <div>
+        <iron-collapse id="collapse" opened horizontal>
+          <div class="drawer-contents resize-files">
+            <content select="[main]"></content>
+          </div>
+        </iron-collapse>
+        <paper-icon-button icon="{{currentIcon}}" on-click=closeDrawer class="drawer-buttons"></paper-icon-button>
+      </div>
+    </div>
+  </template>
+
+  <script>
+
+    Polymer({
+      is: "side-drawer",
+      properties: {
+        isOpen : {
+          value : true
+        },
+        currentIcon : {
+          type : String,
+          value : 'arrow-back'
+        },
+        openIcon : {
+          value : 'arrow-back'
+        },
+        closedIcon : {
+          value : 'arrow-forward'
+        },
+        orientation : {
+          type : String,
+          value : 'left',
+          observer : 'changed'
+        },
+        class : {
+            type: String,
+            value : 'drawer-container-left'
+        },
+        width : {
+            value : 200 + 'px'
+        }
+      },
+      closeDrawer: function() {
+        this.isOpen = !this.isOpen;
+        this.$.collapse.toggle();
+
+        if(this.isOpen){
+          this.currentIcon = this.openIcon;
+        }
+        else{
+         this.currentIcon = this.closedIcon; 
+        }
+      },
+      changed : function(newVal, oldVal){
+        if(newVal === 'left'){
+          this.openIcon = 'arrow-back';
+          this.closedIcon = 'arrow-forward';
+          this.class = 'drawer-container-left';
+        }
+        else{
+          this.openIcon = 'arrow-forward';
+          this.closedIcon = 'arrow-back';
+          this.class = 'drawer-container-right';
+        }
+        this.currentIcon = this.openIcon;
+      }
+    });
+  </script>
+</dom-module>

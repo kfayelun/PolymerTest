@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+#main-wrapper{
+  height: 100%;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.right-align {
+  float: right;
+}
+
+.dialog-dropdown-width {
+  width: 34%;
+}
+
+.dialog-input-width {
+  width: 65%;
+}
